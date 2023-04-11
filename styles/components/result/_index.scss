@@ -1,0 +1,155 @@
+@use "../../mixins/media-query" as mq;
+@use "../../globals/color-palette" as cp;
+@use "../../mixins/linear-gradient-bg" as lg;
+@use "../../variables/colors" as c;
+
+@use "sass:color";
+
+
+.test-result-container {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.test-result {
+  display: flex;
+  flex-direction: column;
+
+  @include mq.desktop-width {
+    flex-direction: row;
+    width: fit-content;
+    box-shadow: 5px 5px 4px 0 #c5c3c3;
+  }
+
+  &__score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+    height: 50vh;
+    padding: 30px 50px;
+
+    @include lg.linear-blue-gradient-bg(180deg);
+
+    border-radius: 0 0 20px 20px;
+    
+    // experiment
+    @include mq.desktop-width {
+        height: auto;
+        width: 30vw;
+        border-radius: 20px;
+    }
+
+    &__title {
+      color: map-get(cp.$text, "grey-text");
+      font-size: 20px;
+    }
+
+    &__value-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      width: min-content;
+      height: auto;
+      padding: 40px;
+      border-radius: 50%;
+      @include lg.linear-dark-blue-gradient-bg(0deg);
+    }
+
+    &__value {
+      color: map-get(cp.$text, "white-text");
+      font-size: 58px;
+      font-weight: bold;
+    }
+
+    &__total-value {
+      color: map-get(cp.$text, "grey-text");
+      font-size: 14px;
+    }
+
+    &__description {
+      color: map-get(cp.$text, "white-text");
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    &__comparison {
+      color: map-get(cp.$text, "grey-text");
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 40px;
+
+    background-color: map-get(c.$neutral-colors, "white");
+
+    @include mq.desktop-width {
+        width: 40vw;
+    }
+
+    &__title {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      &__item {
+        display: flex;
+        justify-content: space-between;
+
+        padding: 20px 10px;
+        border-radius: 10px;
+
+        &__category-container {
+            display: flex;
+            gap: 3px;
+        }
+
+        @each $name, $color in cp.$color-palette {
+          &--#{$name} {
+            @extend .test-result__summary__content__item;
+            background-color: transparentize($color, 0.9);
+            color: $color;
+            font-weight: bold;
+          }
+        }
+
+        &__score {
+            color: map-get(cp.$text, "dark-grey-text");
+
+            &--bold {
+                color: #000;
+            }
+        }
+      }
+    }
+  }
+
+  &__button {
+    background-color: map-get(c.$neutral-colors, "dark-gray-blue");
+    color: map-get(c.$neutral-colors, "white");
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 25px;
+    transition: all 0.3s;
+
+    &:hover {
+        background-color: map-get(c.$gradient-colors, "light-royal-blue");
+        cursor: pointer;
+    }
+  }
+}

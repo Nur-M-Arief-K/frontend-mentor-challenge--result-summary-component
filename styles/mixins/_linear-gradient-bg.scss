@@ -1,0 +1,18 @@
+@use "../variables/colors" as c;
+
+@mixin linear-blue-gradient-bg($direction) {
+    background: linear-gradient($direction, 
+    map-get(c.$gradient-colors, "light-slate-blue"), 
+    map-get(c.$gradient-colors, "light-royal-blue"), 
+    );
+}
+
+@mixin linear-dark-blue-gradient-bg($direction) {
+    background: linear-gradient($direction, 
+    lighten(map-get(c.$gradient-colors, "light-royal-blue"), 10%), 
+    map-get(c.$gradient-colors, "light-royal-blue"), 
+    map-get(c.$gradient-colors, "light-royal-blue"), 
+    map-get(c.$gradient-colors, "violet-blue"), 
+    );
+}
+

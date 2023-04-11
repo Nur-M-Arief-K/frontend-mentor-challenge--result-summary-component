@@ -1,0 +1,26 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Hanken Grotesk", sans-serif;
+}
+
+p {
+    font-size: 18px;
+}
+
+ul {
+    list-style-type: none;
+    margin-block: 0;
+    margin-inline: 0;
+    padding-inline: 0;
+}
+
+button {
+    font-family: inherit;
+    border: none;
+    padding: 0;
+    outline: none;
+}

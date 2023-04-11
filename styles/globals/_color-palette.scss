@@ -1,0 +1,14 @@
+@use "../variables/colors" as c;
+
+$text: (
+    "white-text": map-get(c.$neutral-colors, "white"),
+    "grey-text": map-get(c.$neutral-colors, "light-lavender"),
+    "dark-grey-text": map-get(c.$neutral-colors, "dark-gray-blue")
+);
+
+$color-palette: (
+    "reaction": map-get(c.$primary-colors , "light-red"),
+    "memory": map-get(c.$primary-colors , "orangey-yellow"),
+    "verbal": map-get(c.$primary-colors , "green-teal"),
+    "visual": map-get(c.$primary-colors , "cobalt-blue"),
+);
